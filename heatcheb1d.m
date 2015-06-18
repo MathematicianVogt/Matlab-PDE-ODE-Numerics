@@ -5,7 +5,7 @@ clear all
   N = 32; h = 2/N; x = -1:h:1; t = 0; dt = .001;
   v = cos(x).^2 + exp(sin(x))-x.^5; 
   v(1)=0;
-  v(end)=10;
+  v(end)=0;
   f=v;
   v=v';
   v2=v;
@@ -41,10 +41,11 @@ clear all
     data(i+1,:) = v; tdata = [tdata; t];
   end
   toc
- 
+ figure;
  for i=1:nplots
      plot(x,data(i,:))
-     %axis([x(1) x(end),0 4])
-     shg
-     pause(.3)
+     axis([-1 1 -1 3]);
+     F(i)=getframe;
  end
+
+ 

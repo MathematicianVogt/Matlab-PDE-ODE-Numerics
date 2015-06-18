@@ -1,9 +1,9 @@
 
 clear all
-N = 16; h = 2/N; x = -1:h:1; y = -1:h:1; t = 0; dt = .1;
+N = 16; h = 2/N; x = -1:h:1; y = -1:h:1; t = 0; dt = .3;
 [X,Y] = meshgrid(x,y);
 %v=X.*Y;
-v = cos(X) +sin(2.*Y) +cos(Y) +sin(2.*Y);
+v = 1+ 20*X.*Y;
 %v= zeros(size(X));
 %v((N+2)/2,(N+2)/2)=1;
 
@@ -16,7 +16,7 @@ for i=2:length(v)-1
 end
 
 
-c=.1;
+c=.01;
 % Time-stepping by leap frog formula:
   tmax = 100; tplot = .15; clf, drawnow, set(gcf,'renderer','zbuffer')
   plotgap = round(tplot/dt); dt = tplot/plotgap;
@@ -66,11 +66,11 @@ for i = 1:nplots
 tdata = [tdata; t];
 end
 figure;
-colormap colorcube;
+colormap jet;
 for i=1:nplots
+    
     mesh(X,Y,data(:,:,i));
-    axis([-1 1 -1 1 0 5]);
+    axis([-1 1 -1 1 0 50]);
     F(i)=getframe;
   
 end
-movie(F)

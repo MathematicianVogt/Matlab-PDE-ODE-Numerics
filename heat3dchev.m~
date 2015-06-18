@@ -1,14 +1,12 @@
 %Ryan Vogt
 %3d heat equation with dirchetlet condtions
 %going to implement solution with neumann later.
-%I'll implement implict burgers and thin film with pseudo spectral and
-% newtons method 2/3/2015
 clear all
 N = 8; h = 2/N; x = -1:h:1; y = -1:h:1; z = -1:h:1; t = 0; dt = h/4;
 [X,Y,Z] = meshgrid(x,y,z);
 
-v = X.^2 +Y.^2 +Z.^2;
-c=.01;
+v = 1+ X.*Y.*Z;
+c=.1;
 
 %set up cheb matrix and cheb operator for 3d space
 [D,y]=cheb(N);
